@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
@@ -6,104 +6,91 @@ import styled from "styled-components";
 const Nav = styled.nav`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  width: 100vw;
+  height: 70px;
+  padding: 0 25px;
   align-items: center;
-  width: 100%;
-  height: 6rem;
-  font-size: 1.6rem;
-  background: #eee;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  top: 0;
-  left: 0;
-  position: sticky;
-  z-index: 7;
-  border-bottom: 3px solid #027b93;
+  background: ${({ theme }) => theme.palette.darkPrimary};
+  color: ${({ theme }) => theme.palette.text};
 `;
 
 const NavList = styled.ul`
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex: 6;
+  width: 100%;
   height: 100%;
+  padding: 0;
   list-style-type: none;
+  flex-direction: row;
+  justify-content: end;
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    justify-content: start;
-    position: absolute !important;
-    top: 0;
+    display: ${({ isMenuVisible }) => (isMenuVisible ? "flex" : "none")};
+    position: absolute;
+    top: 70px;
     left: 0;
-    background: #fff;
-    width: 70%;
-    height: 100vh;
-    border-right: #ccc 1px solid;
-    opacity: 1;
-    transform: translateX(-500px);
-    transition: transform 0.5s ease-in-out;
-    z-index: 8;
-    padding-top: 2rem;
-  }
-
-  @media (max-width: 480px) {
-    width: 85%;
+    margin: 0;
+    height: 400px;
+    flex-direction: column;
+    justify-content: center;
+    background: ${({ theme }) => theme.palette.accent};
+    color: ${({ theme }) => theme.palette.textAlternative};
+    z-index: 999;
   }
 `;
 
 const NavListItem = styled.li`
   display: flex;
-  flex-direction: column;
+  height: inherit;
+  font-size: 1.3rem;
+  padding: 0 10px;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  width: 100%;
+  margin-right: 7px;
+  margin-left: 7px;
 
   &:hover {
-    background: #fff;
-    color: #027b93;
+    background: ${({ theme }) => theme.palette.background};
+    cursor: pointer;
   }
 
   @media (max-width: 768px) {
-    max-height: 4rem;
+    margin: 0;
+
+    &:hover > a {
+      color: ${({ theme }) => theme.palette.text};
+    }
   }
 `;
 
 const NavListLink = styled.a`
-  display: inline-block;
-  font-size: 1.8rem;
-  text-decoration: none;
-  color: #555;
-  font-weight: bolder;
+  display: flex;
   width: 100%;
-  height: 100%;
-  text-align: center;
-  /*To center vertically, we need line height to be equal to height of navbar*/
-  line-height: 6rem;
-  margin: auto;
-
-  &:hover {
-    background: #fff;
-    color: #027b93;
-  }
+  min-width: 100px;
+  height: inherit;
+  justify-content: center;
+  align-items: center;
+  color: ${({ theme }) => theme.palette.text};
 
   @media (max-width: 768px) {
-    line-height: 4rem;
-    color: #000;
+    color: ${({ theme }) => theme.palette.textAlternative};
   }
 `;
 
-const LogoWrapper = styled.div`
-  height: 100%;
-  padding: 0.8rem;
-  flex: 5;
+const LogoWrapper = styled.a`
+  font-size: 1.3rem;
 `;
 
 const MenuWrapper = styled.div`
   display: none;
 
   @media (max-width: 768px) {
-    display: block;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
 
     &:hover {
       cursor: pointer;
@@ -113,12 +100,6 @@ const MenuWrapper = styled.div`
 
 const Navbar = () => {
   const [isMenuVisible, setMenuVisible] = useState(false);
-  const menuToggler = () =>
-    document.querySelector(".main-menu").classList.toggle("show");
-
-  useEffect(() => {
-    console.log(NavList);
-  }, [isMenuVisible]);
 
   return (
     <Nav>
@@ -126,11 +107,15 @@ const Navbar = () => {
         <LogoWrapper>Pistios</LogoWrapper>
       </Link>
 
-      <MenuWrapper onClick={() => setMenuVisible(!isMenuVisible)}>
+      <MenuWrapper
+        onClick={() => {
+          setMenuVisible(!isMenuVisible);
+        }}
+      >
         <Image src="/menu.png" alt="Menu toggler" width={48} height={48} />
       </MenuWrapper>
 
-      <NavList>
+      <NavList isMenuVisible={isMenuVisible}>
         <NavListItem>
           <Link href="/blog" passHref>
             <NavListLink>Blog</NavListLink>
