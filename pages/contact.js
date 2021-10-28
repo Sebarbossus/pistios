@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Layout from "../components/layout";
-import Main from "../components/main";
+import Layout from "../components/Layout";
+import Main from "../components/Main";
 import styled from "styled-components";
 
 const Content = styled.div`

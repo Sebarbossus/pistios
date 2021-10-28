@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Navbar from "../components/navbar";
-import Main from "../components/main";
+import Navbar from "../components/Navbar";
+import Main from "../components/Main";
 
 export default function Community() {
   return (

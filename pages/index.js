@@ -1,7 +1,7 @@
 import { fetchAPI } from "../lib/api";
-import Main from "../components/main";
-import Layout from "../components/layout";
-import Seo from "../components/seo";
+import Main from "../components/Main";
+import Layout from "../components/Layout";
+import Seo from "../components/Seo";
 
 const Home = ({ categories, homepage }) => {
   return (

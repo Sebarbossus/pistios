@@ -1,8 +1,8 @@
 import { fetchAPI } from "../lib/api";
-import Main from "../components/main";
-import Articles from "../components/articles";
-import Layout from "../components/layout";
-import Seo from "../components/seo";
+import Main from "../components/Main";
+import Articles from "../components/Articles";
+import Layout from "../components/Layout";
+import Seo from "../components/Seo";
 
 export default function Blog({ articles, categories, blog }) {
   return (

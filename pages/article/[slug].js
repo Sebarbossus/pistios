@@ -1,8 +1,8 @@
 import ReactMarkdown from "react-markdown";
 import Moment from "react-moment";
 import { fetchAPI } from "../../lib/api";
-import Layout from "../../components/layout";
-import Seo from "../../components/seo";
+import Layout from "../../components/Layout";
+import Seo from "../../components/Seo";
 import { getStrapiMedia } from "../../lib/media";
 import styled from "styled-components";
 
