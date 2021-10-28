@@ -1,31 +1,31 @@
 import { fetchAPI } from "../lib/api";
 import Main from "../components/main";
+import Articles from "../components/articles";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 
-const Home = ({ categories, homepage }) => {
+export default function Blog({ articles, categories, blog }) {
   return (
     <>
-      <Seo seo={homepage.seo} />
+      <Seo seo={blog.seo} />
       <Layout categories={categories}>
-        <Main headline="Homepage" />
+        <Main headline="Our Blog" />
+        <Articles articles={articles} />
       </Layout>
     </>
   );
-};
+}
 
 export async function getStaticProps() {
   // Run API calls in parallel
-  const [articles, categories, homepage] = await Promise.all([
+  const [articles, categories, blog] = await Promise.all([
     fetchAPI("/articles"),
     fetchAPI("/categories"),
     fetchAPI("/homepage"),
   ]);
 
   return {
-    props: { articles, categories, homepage },
+    props: { articles, categories, blog },
     revalidate: 1,
   };
 }
-
-export default Home;

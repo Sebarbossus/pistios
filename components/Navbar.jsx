@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import styled from "styled-components";
+import Logo from "./Logo";
 
 const Nav = styled.nav`
   display: flex;
   flex-direction: row;
-  width: 100vw;
+  width: 100%;
   height: 70px;
   padding: 0 25px;
   align-items: center;
-  background: ${({ theme }) => theme.palette.darkPrimary};
   color: ${({ theme }) => theme.palette.text};
 `;
 
@@ -30,6 +31,8 @@ const NavList = styled.ul`
     left: 0;
     margin: 0;
     height: 400px;
+    padding-bottom: 3px;
+    padding-top: 3px;
     flex-direction: column;
     justify-content: center;
     background: ${({ theme }) => theme.palette.accent};
@@ -41,7 +44,7 @@ const NavList = styled.ul`
 const NavListItem = styled.li`
   display: flex;
   height: inherit;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   padding: 0 10px;
   justify-content: center;
   align-items: center;
@@ -63,21 +66,13 @@ const NavListItem = styled.li`
 `;
 
 const NavListLink = styled.a`
-  display: flex;
-  width: 100%;
-  min-width: 100px;
-  height: inherit;
-  justify-content: center;
-  align-items: center;
-  color: ${({ theme }) => theme.palette.text};
+  padding-bottom: 5px;
+  font-family: ${({ theme }) => theme.fonts.title}, cursive;
+  color: ${({ theme }) => theme.palette.accent};
 
   @media (max-width: 768px) {
     color: ${({ theme }) => theme.palette.textAlternative};
   }
-`;
-
-const LogoWrapper = styled.a`
-  font-size: 1.3rem;
 `;
 
 const MenuWrapper = styled.div`
@@ -98,14 +93,14 @@ const MenuWrapper = styled.div`
   }
 `;
 
-const Navbar = () => {
+const Navbar = ({ className }) => {
   const [isMenuVisible, setMenuVisible] = useState(false);
+  const links = ["Blog", "Contact"];
+  const router = useRouter();
 
   return (
     <Nav>
-      <Link href="/" passHref>
-        <LogoWrapper>Pistios</LogoWrapper>
-      </Link>
+      <Logo logoVariation="black" height={32} />
 
       <MenuWrapper
         onClick={() => {
@@ -115,30 +110,29 @@ const Navbar = () => {
         <Image src="/menu.png" alt="Menu toggler" width={48} height={48} />
       </MenuWrapper>
 
-      <NavList isMenuVisible={isMenuVisible}>
-        <NavListItem>
-          <Link href="/blog" passHref>
-            <NavListLink>Blog</NavListLink>
-          </Link>
-        </NavListItem>
-        <NavListItem>
-          <Link href="/community" passHref>
-            <NavListLink>Community</NavListLink>
-          </Link>
-        </NavListItem>
-        <NavListItem>
-          <Link href="/support" passHref>
-            <NavListLink>Support</NavListLink>
-          </Link>
-        </NavListItem>
-        <NavListItem>
-          <Link href="/contact" passHref>
-            <NavListLink>Contact</NavListLink>
-          </Link>
-        </NavListItem>
+      <NavList isMenuVisible={isMenuVisible} className={className}>
+        {links.map((link, index) => (
+          <NavListItem key={index}>
+            <Link href={`/${link.toLowerCase()}`} passHref key={index}>
+              <NavListLink
+                className={
+                  router.pathname.startsWith(`/${link.toLowerCase()}`)
+                    ? "active"
+                    : ""
+                }
+              >{`${link}`}</NavListLink>
+            </Link>
+          </NavListItem>
+        ))}
       </NavList>
     </Nav>
   );
 };
 
-export default Navbar;
+const StyledNavbar = styled(Navbar)`
+  .active {
+    border-bottom: 4px solid ${({ theme }) => theme.palette.darkPrimary};
+  }
+`;
+
+export default StyledNavbar;
