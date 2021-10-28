@@ -1,4 +1,4 @@
-import Navbar from "./navbar";
+import Navbar from "./Navbar";
 import CookieConsent from "react-cookie-consent";
 
 const Layout = ({ children, categories, seo }) => {
