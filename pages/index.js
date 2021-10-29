@@ -8,7 +8,10 @@ const Home = ({ categories, homepage }) => {
     <>
       <Seo seo={homepage.seo} />
       <Layout categories={categories}>
-        <Main headline="Homepage" />
+        <Main
+          headline="Homepage"
+          text="Hello and welcome to Pistios! Pistios is a blog that was built with the goal to share some thoughts on life, explore faith and share it with others in case they are interested. Feel free to check out the articles and comment if you have any questions. Enjoy your stay here!"
+        />
       </Layout>
     </>
   );

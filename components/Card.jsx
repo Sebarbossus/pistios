@@ -62,6 +62,7 @@ const Title = styled.h2`
   font-family: ${({ theme }) => theme.fonts.title}, cursive;
   font-size: 2.2rem;
   margin-top: 0;
+  padding-top: 40px;
 `;
 
 const Card = ({ article }) => {

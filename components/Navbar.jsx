@@ -30,7 +30,7 @@ const NavList = styled.ul`
     top: 70px;
     left: 0;
     margin: 0;
-    height: 400px;
+    height: 200px;
     padding-bottom: 3px;
     padding-top: 3px;
     flex-direction: column;
@@ -84,7 +84,7 @@ const MenuWrapper = styled.div`
     height: 100%;
     padding: 0;
     flex-direction: row;
-    justify-content: end;
+    justify-content: end !important;
     align-items: center;
 
     &:hover {
