@@ -3,6 +3,7 @@ import Moment from "react-moment";
 import { fetchAPI } from "../../lib/api";
 import Layout from "../../components/Layout";
 import Seo from "../../components/Seo";
+import DisqusComments from "../../components/Comments";
 import { getStrapiMedia } from "../../lib/media";
 import Link from "next/link";
 import styled from "styled-components";
@@ -92,6 +93,7 @@ const Article = ({ article, categories }) => {
             <Moment format="MMM Do YYYY">{article.published_at}</Moment>
           </p>
         </div>
+        <DisqusComments article={article} />
       </Content>
       {/* TODO: Add comments with Isso */}
     </Layout>
