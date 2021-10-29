@@ -4,6 +4,7 @@ import { fetchAPI } from "../../lib/api";
 import Layout from "../../components/Layout";
 import Seo from "../../components/Seo";
 import { getStrapiMedia } from "../../lib/media";
+import Link from "next/link";
 import styled from "styled-components";
 
 const Banner = styled.div`
@@ -55,6 +56,10 @@ const Tag = styled.span`
   color: ${({ theme }) => theme.palette.darkPrimary};
 `;
 
+const TextLink = styled(Link)`
+  color: ${({ theme }) => theme.palette.darkPrimary};
+`;
+
 const Article = ({ article, categories }) => {
   const seo = {
     metaTitle: article.title,
@@ -71,6 +76,10 @@ const Article = ({ article, categories }) => {
       </Banner>
       <Content>
         <ReactMarkdown>{article.content}</ReactMarkdown>
+        <p>
+          If you liked this article, check out our other articles{" "}
+          <TextLink href="/blog">here</TextLink>
+        </p>
         <hr />
         <div>
           <p>

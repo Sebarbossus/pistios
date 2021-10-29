@@ -12,6 +12,7 @@ const Nav = styled.nav`
   height: 70px;
   padding: 0 25px;
   align-items: center;
+  justify-content: space-between;
   color: ${({ theme }) => theme.palette.text};
 `;
 
@@ -80,11 +81,10 @@ const MenuWrapper = styled.div`
 
   @media (max-width: 768px) {
     display: flex;
-    width: 100%;
     height: 100%;
     padding: 0;
     flex-direction: row;
-    justify-content: end !important;
+    justify-content: flex-end;
     align-items: center;
 
     &:hover {
