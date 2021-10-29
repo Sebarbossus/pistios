@@ -56,7 +56,7 @@ const Tag = styled.span`
   color: ${({ theme }) => theme.palette.darkPrimary};
 `;
 
-const TextLink = styled(Link)`
+const TitleLink = styled.a`
   color: ${({ theme }) => theme.palette.darkPrimary};
 `;
 
@@ -78,7 +78,9 @@ const Article = ({ article, categories }) => {
         <ReactMarkdown>{article.content}</ReactMarkdown>
         <p>
           If you liked this article, check out our other articles{" "}
-          <TextLink href="/blog">here</TextLink>
+          <Link href="/blog" passHref>
+            <TitleLink>here</TitleLink>
+          </Link>
         </p>
         <hr />
         <div>
