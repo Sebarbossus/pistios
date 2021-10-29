@@ -6,13 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "cookieconsent": "3",
     "disqus-react": "^1.1.2",
     "moment": "^2.29.1",
     "next": "11.1.2",
+    "next-sitemap": "^1.6.192",
     "react": "17.0.2",
     "react-cookie-consent": "^6.4.1",
     "react-dom": "17.0.2",
