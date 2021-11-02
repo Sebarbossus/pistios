@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
-import Image from "./Image";
 
 const Wrapper = styled.div`
   display: flex;
@@ -47,14 +46,14 @@ const Wrapper = styled.div`
 const TextWrapper = styled.div`
   padding-left: 25px;
   margin: 5px 10px 35px 30px;
-  border-left: 10px solid ${({ theme }) => theme.palette.accent};
+  /* border-left: 10px solid ${({ theme }) => theme.palette.accent}; */
   color: ${({ theme }) => theme.palette.accent};
 
   @media (max-width: 982px) {
     margin: 30px 0 0 0;
     padding: 0;
     border: 0;
-    border-top: 5px solid ${({ theme }) => theme.palette.accent};
+    /* border-top: 5px solid ${({ theme }) => theme.palette.accent}; */
   }
 `;
 
@@ -70,10 +69,11 @@ const Card = ({ article }) => {
     <Link as={`/article/${article.slug}`} href="/article/[slug]">
       <a>
         <Wrapper>
+          {/* TODO: Get a good backend service that does not reset the dynos
           <div>
-            {/* eslint-disable-next-line jsx-a11y/alt-text */}
+            eslint-disable-next-line jsx-a11y/alt-text
             <Image image={article.image} maxWidth="500px" borderRadius="10px" />
-          </div>
+          </div> */}
           <TextWrapper>
             <Title>{article.title}</Title>
             <p>#{article.category.name}</p>

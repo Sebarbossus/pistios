@@ -16,7 +16,8 @@ const Banner = styled.div`
   align-items: center;
   justify-content: center;
 
-  &::before {
+  // TODO: Get a good backend service
+  /* &::before {
     content: "";
     background: url(${({ article }) => getStrapiMedia(article.image)});
     background-size: cover;
@@ -26,7 +27,7 @@ const Banner = styled.div`
     bottom: 0px;
     left: 0px;
     opacity: 0.15;
-  }
+  } */
 `;
 
 const Title = styled.h1`
