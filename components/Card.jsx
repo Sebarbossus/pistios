@@ -26,9 +26,9 @@ const Wrapper = styled.div`
     cursor: pointer;
   }
 
-  &&&:hover > div:nth-child(2) {
+  &&&:hover > div {
     color: ${({ theme }) => theme.palette.background};
-    border-left: 12px solid ${({ theme }) => theme.palette.background};
+    /* border-left: 12px solid ${({ theme }) => theme.palette.background}; */
   }
 
   @media (max-width: 982px) {
@@ -77,7 +77,7 @@ const Card = ({ article }) => {
           <TextWrapper>
             <Title>{article.title}</Title>
             <p>#{article.category.name}</p>
-            <p>{article.description}</p>
+            <p style={{fontSize: '1.3rem'}}>{article.description}</p>
           </TextWrapper>
         </Wrapper>
       </a>

@@ -95,7 +95,7 @@ const MenuWrapper = styled.div`
 
 const Navbar = ({ className }) => {
   const [isMenuVisible, setMenuVisible] = useState(false);
-  const links = ["Blog", "Contact"];
+  const links = ["Home", "Blog", "Contact"];
   const router = useRouter();
 
   return (
@@ -113,10 +113,15 @@ const Navbar = ({ className }) => {
       <NavList isMenuVisible={isMenuVisible} className={className}>
         {links.map((link, index) => (
           <NavListItem key={index}>
-            <Link href={`/${link.toLowerCase()}`} passHref key={index}>
+            <Link
+              href={link === "Home" ? "/" : `/${link.toLowerCase()}`}
+              passHref
+              key={index}
+            >
               <NavListLink
                 className={
-                  router.pathname.startsWith(`/${link.toLowerCase()}`)
+                  router.pathname.startsWith(`/${link.toLowerCase()}`) ||
+                  (router.pathname === "/" && link === "Home")
                     ? "active"
                     : ""
                 }

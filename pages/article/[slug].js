@@ -17,9 +17,11 @@ const Banner = styled.div`
   justify-content: center;
 
   // TODO: Get a good backend service
-  /* &::before {
+  // https://res.cloudinary.com/pistios/image/upload/v1635623609/1.jpg
+  // https://res.cloudinary.com/pistios/image/upload/v1636793412/ID-Card_qermo4.jpg
+  &::before {
     content: "";
-    background: url(${({ article }) => getStrapiMedia(article.image)});
+    background: ${({ theme }) => theme.palette.darkPrimary};
     background-size: cover;
     position: absolute;
     top: 0px;
@@ -27,7 +29,7 @@ const Banner = styled.div`
     bottom: 0px;
     left: 0px;
     opacity: 0.15;
-  } */
+  }
 `;
 
 const Title = styled.h1`
@@ -43,14 +45,14 @@ const Content = styled.div`
   text-align: justify;
   font-size: 1.2rem;
   font-family: ${({ theme }) => theme.fonts.text};
-  margin: 10px 50px;
+  margin: 10px 200px;
 
   @media (max-width: 982px) {
-    margin: 10px 30px;
+    margin: 10px 50px;
   }
 
   @media (max-width: 768px) {
-    margin: 10px 15px;
+    margin: 10px 20px;
   }
 `;
 
@@ -96,7 +98,6 @@ const Article = ({ article, categories }) => {
         </div>
         <DisqusComments article={article} />
       </Content>
-      {/* TODO: Add comments with Isso */}
     </Layout>
   );
 };

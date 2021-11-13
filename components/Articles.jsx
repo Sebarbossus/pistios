@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const ArticleWrapper = styled.div`
   max-width: 100vw;
-  margin: 0 50px;
+  margin: 0 200px;
 
   @media (max-width: 768px) {
     margin: 0 20px;
